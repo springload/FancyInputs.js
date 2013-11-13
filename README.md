@@ -1,4 +1,4 @@
-FancySelect.js
+FancyInputs.js
 ==============
 
 Pretty select boxes for work and pleasure.
