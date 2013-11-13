@@ -1,0 +1,30 @@
+{
+  "name": "FancyInputs",
+  "version": "1.0.0",
+  "homepage": "https://github.com/springload/FancySelect.js",
+  "description": "Fancy input elements for work and pleasure",
+  "main": "fancy-inputs.js",
+  "keywords": [
+    "pretty",
+    "select",
+    "boxes",
+    "checkboxes",
+    "forms",
+    "css"
+  ],
+  "authors": [
+    "James Player | Springload",
+    "Josh Barr | Springload"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery":"1.9.1"
+  }
+}
