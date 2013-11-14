@@ -120,3 +120,9 @@ var FancyCheckboxes = (function(FancyInput){
     });
     return Checkboxes;
 })(FancyInput);
+
+
+$(document).ready(function() {
+    FancySelects.init();
+    FancyCheckboxes.init();
+});
