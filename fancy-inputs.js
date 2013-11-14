@@ -1,4 +1,10 @@
 var FancyInput = (function(){
+
+    var hasJS = function() {
+        var root = document.documentElement;
+        root.className = root.className.replace(/\bno-js\b/,'') + ' js';
+    };
+
     var Fancy = function(options){
         var self = this;
         this.element = "";
@@ -55,6 +61,7 @@ var FancyInput = (function(){
             }
         }
     };
+    hasJS();
     return Fancy;
 })();
 
