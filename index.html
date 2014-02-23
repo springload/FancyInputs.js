@@ -13,6 +13,8 @@
 	</style>
 </head>
 <body>
+
+	<h2>Select</h2>
 	<div class='field_select' data-select>
 	    <select class="field_select__input" id="mySelect" name="mySelect" tabindex="">
 	        <option value="">Option 1</option>
@@ -25,6 +27,8 @@
 	        <i class='i icon_disclosure'></i>
 	    </div>
 	</div>
+
+	<h2>Checkbox</h2>
 	<div class='icon_text'>
 	    <div class='i field_checkbox' data-checkbox data-id='myCheckbox'>
 	        <i class='field_checkbox__fancy'></i>
@@ -32,7 +36,25 @@
 	        <label class='icon_text__label field_checkbox__label' for='myCheckbox'>My awesome checkbox</label>
 	    </div>
 	</div>
+
+	<h2>Radio buttons</h2>
+	<div class='icon_text'>
+	    <div class='i field_radio' data-radio data-id='myRadio_1'>
+	        <i class='field_radio__fancy'></i>
+	        <input type='radio' id='myRadio_1' name='myRadio' value='1' tabindex=''>
+	        <label class='icon_text__label field_radio__label' for='myRadio_1'>My radio button</label>
+	    </div>
+	</div>
+	<div class='icon_text'>
+	    <div class='i field_radio' data-radio data-id='myRadio_2'>
+	        <i class='field_radio__fancy'></i>
+	        <input type='radio' id='myRadio_2' name='myRadio' value='2' tabindex=''>
+	        <label class='icon_text__label field_radio__label' for='myRadio_2'>Hey, another radio button</label>
+	    </div>
+	</div>
+
 	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js' type="text/javascript"></script>
 	<script src="fancy-inputs.js" type="text/javascript"></script>
+
 </body>
-</html> 
+</html>

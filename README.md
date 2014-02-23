@@ -30,6 +30,24 @@ Pretty select boxes for work and pleasure.
 </div>
 ```
 
+### Radio buttons
+```html
+<div class='icon_text'>
+    <div class='i field_radio' data-radio data-id='myRadio_1'>
+        <i class='field_radio__fancy'></i>
+        <input type='radio' id='myRadio_1' name='myRadio' value='1' tabindex=''>
+        <label class='icon_text__label field_radio__label' for='myRadio_1'>My radio button</label>
+    </div>
+</div>
+<div class='icon_text'>
+    <div class='i field_radio' data-radio data-id='myRadio_2'>
+        <i class='field_radio__fancy'></i>
+        <input type='radio' id='myRadio_2' name='myRadio' value='2' tabindex=''>
+        <label class='icon_text__label field_radio__label' for='myRadio_2'>Hey, another radio button</label>
+    </div>
+</div>
+```
+
 ### Conditionals
 
 ```html

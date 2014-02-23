@@ -145,6 +145,7 @@ var Fancy = (function(document,window){
         return Selects;
     })(FancyInput);
 
+
     /**
      * Pretty checkboxes
      */
@@ -166,6 +167,33 @@ var Fancy = (function(document,window){
             }
         });
         return Checkboxes;
+    })(FancyInput);
+
+
+    /**
+     * Pretty radio buttons
+     */
+    var FancyRadios = (function(FancyInput){
+        var Radio = new FancyInput({
+            element: "[data-radio]",
+            input: "input",
+            triggerElement: ".field_radio__fancy",
+            activeClass: "field_radio--checked",
+            onInputChange: function($el) {
+               var self = this;
+               $group = $("input:radio[name='"+$el.attr("name")+"']");
+               $group.each(function( index ) {
+                  el = $(this).get(0),
+                  $parent = $(this).parent();
+                  if (el.checked) {
+                      $parent.addClass(self.activeClass);
+                  } else {
+                      $parent.removeClass(self.activeClass);
+                  }
+               });
+            }
+        });
+        return Radio;
     })(FancyInput);
 
 
@@ -243,6 +271,7 @@ var Fancy = (function(document,window){
     $(document).ready(function() {
         FancySelects.init();
         FancyCheckboxes.init();
+        FancyRadios.init();
         FancyConditionals.init();
     });
 

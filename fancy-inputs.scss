@@ -33,8 +33,6 @@ $fieldBorderColorHover: #ccc;
  * Icons
  * ----------------------------------------------------------------------------
  */
-.icon_checkbox--unchecked,
-.icon_checkbox--checked,
 .icon_disclosure,
 .icon_disclosure--active {
     width: 16px;
@@ -43,16 +41,21 @@ $fieldBorderColorHover: #ccc;
 }
 
 .icon_checkbox--unchecked,
-.icon_checkbox--checked {
+.icon_checkbox--checked,
+.icon_radio--unchecked,
+.icon_radio--checked {
     width: 18px;
     height: 18px;
+    background-repeat: no-repeat;
 }
 
-.icon_checkbox--unchecked {
+.icon_checkbox--unchecked,
+.icon_radio--unchecked {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAbxJREFUeNqkVMtKQlEU3Vcwpavkg7KJ0ROtJg0aVJPCaFDULGzcsB/oH+oHGjapSTTrBUVRRBHVoEmlvYyKwEIt1PCR3vaSc0XlJloLFmd72Gt59rl7H2nu7I404GFOibVJ7D0x95grs71tu1oiSVGU/I/583s3LwvMISqPfeYMm/pKzXp4vWCjQV7XmGa7sYZcNpk6rSayGPW5xI9EmnyRGPnCcQolUtiKMifY8KDQzMJGjRyfMOu67WYaba4nnSRpHinLlWw9vtNlCF70yexTTyjxnUF1jM0um4nGWx1UCdYfgnQVjpE4xAAbKjoOhmHkqDXQWEsDVQrkQgOt8CCYeRG0W+RfS9MCcqER8Kpm+PzktslULQo0HtXMicBi0FdtVqBxqmZJBJmsQv8FzF4RxNKZqsXR1Lcavqhmpwj8kVjVZqI1gCPVbBnBTSSea8hKgdRb1ggsqWbbaLzgV5I2A28Vm20EggSNaNqd/KCLAf/rOPVz918XvRqFg47O7rDK5GLi82c4B5ft57JQmjiR5qCXPkGLYkTKAVVMaz1BRVlsiPpGmJNi5tCQeHOemYfMVdwRBrv0H34EGAAJPLQBEeNTgwAAAABJRU5ErkJggg==);
 }
 
-.icon_checkbox--checked {
+.icon_checkbox--checked,
+.icon_radio--checked {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAoxJREFUeNqMlE1sElEQx2eptBvYpts2tFw0iDStevUgeNAoJmrkZpRbw4HEHognvHJVORkO4MmLJoT0Bn5HqRrFqJEDUanFVLSpVKHUdKsLFXDmuW+lBMVJ/nnfv30z82aFVqsFnXbp5fvD2JxBUbtDm/6IeoBKoO637z+/b5eMZ9aEdhhOTGETRR2Cf9scagYhdHhGVdVzoihe0GEIOohNEjU4KvbD5IgZdg9LIItGtr6mbkK+qkB+dQMqah3sQ6Yfx2yWV3N3bh9Ip9MQDAaBwbQbPUMN7R0dhOM2CxgEoeuVmrj/dUWBCckI8XgcMpkMOBwOCAQCIFx8UaBTT1H794xIcNI+Dr0M3YJIJAKFQkEHoZtnt+HaEQKNmwbgxM6xnqBSqQTRaJS1kiSB3++H5Vrzsl2EKwZcP02bHLJZd402/g0UDof1dYpTXgWYXfhsorFBSz9MYcDJEokEhEIhyGazXUGKorDx9PQ0yJYxeLRUAc4g2HbqyAO/s1YsFlkbi8UglUp1BTmdTnC5XGA06EliDIpZDdXfaLagr09gweTBTSaTUC6XIZfL6SCr1Qper7drGOhmy9RRNhtsArPCgJQlMko9B5H5fD62h2y9/pNPL3HYc+rMV/8c6ARy83g8YLPZ9PGbVf3MEw67Tp131Q32INuBlHZKP3fP7Xbr67R1Ac9odo3D7tLrX/leg5uLX7bcRJZlln4CtrtHdmNxBeiMVjn3qPNf5UQvnoPo9rc+fMWSWqfhN0ouFvxbHdZZ6FQNE8NmmETRk2ngHgr2PLpFrmk3IpoHQQ/5R7v9gq5SefWoKvLCh6B8+6TQ+XNEIPl3FHVKq1t6kHXUJ9Rj1CzFSPuXbbFfAgwANwgk3BP33c8AAAAASUVORK5CYII=);
 }
 
@@ -120,6 +123,61 @@ $fieldBorderColorHover: #ccc;
 
 
 /**
+ * Radio buttons
+ * ----------------------------------------------------------------------------
+ */
+.field_radio{
+    @extend %relative;
+
+    line-height: 1;
+
+    & > input{
+        margin: 0;
+    }
+
+    .js & > input {
+        @extend %absolute;
+        top: 0;
+        left: 0;
+
+        /**
+         * IE8 refuses to fire events on a hidden checkbox. Use opacity instead
+         */
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    }
+}
+
+    .field_radio__fancy {
+        @extend %relative;
+        @extend .icon_radio--unchecked;
+
+        display: inline-block;
+        vertical-align: middle;
+        z-index: 1;
+        top: 0;
+        left: 0;
+
+        .no-js &{
+            display: none;
+        }
+        .field_radio--checked & {
+            @extend .icon_radio--checked;
+        }
+    }
+
+    .field_radio,
+    .field_radio__label{
+        cursor: pointer;
+    }
+
+
+    .field_radio__label{
+        font-size: .875em;
+    }
+
+
+/**
  * Selects
  * ----------------------------------------------------------------------------
  */
@@ -143,7 +201,7 @@ $fieldBorderColorHover: #ccc;
         width: 100%;
 
         .ie8 .property-search__criteria & {
-            width: 120%;            
+            width: 120%;
         }
     }
 
