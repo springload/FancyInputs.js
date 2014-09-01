@@ -147,6 +147,42 @@ var Fancy = (function(document,window){
 
 
     /**
+     * FileUpload
+     * Update an arbitrary label element based on the selectedIndex.
+     */
+    var FancyFiles = (function(FancyInput) {
+        var Files = new FancyInput({
+            element: "[data-file]",
+            input: "input",
+            activeClass: "file--loaded",
+            debug: "foo",
+            onInputInitialize: function($domEl, $inputEl) {
+                $domEl.parent().addClass(self.activeClass);
+                $domEl.find("[data-file-label]").on("click", function(){
+                    $inputEl.focus();
+                });
+            },
+            onInputChange: function($inputEl, $domEl) {
+                var self = this,
+                    $self = $inputEl,
+                    labelText = "",
+                    newLabelText = "";
+
+                var labelEl = $inputEl.siblings("[data-file-label]").get(0);
+                newLabelText = $inputEl.val();
+
+                if(newLabelText !== "") {
+                    labelText = newLabelText.split('\\').pop();
+                    labelEl.innerHTML = labelText;
+                }
+
+            }
+        });
+        return Files;
+    })(FancyInput);
+
+
+   /**
      * Pretty checkboxes
      */
     var FancyCheckboxes = (function(FancyInput){
@@ -270,6 +306,7 @@ var Fancy = (function(document,window){
 
     $(document).ready(function() {
         FancySelects.init();
+        FancyFiles.init();
         FancyCheckboxes.init();
         FancyRadios.init();
         FancyConditionals.init();

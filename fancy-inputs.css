@@ -6,21 +6,25 @@
  * Generic extend classes
  * ----------------------------------------------------------------------------
  */
-.field_checkbox, .field_checkbox__fancy, .field_radio, .field_radio__fancy, .field_select {
+/* line 12, ../sass/fancy-inputs.scss */
+.field_checkbox, .field_checkbox__fancy, .field_radio, .field_radio__fancy, .field_select, .field_file {
   position: relative;
 }
 
-.js .field_checkbox > input, .js .field_radio > input, .js .field_select__input, .field_select__affordance {
+/* line 16, ../sass/fancy-inputs.scss */
+.js .field_checkbox > input, .js .field_radio > input, .js .field_select__input, .field_select__affordance, .js .field_file__input, .field_file__affordance {
   position: absolute;
 }
 
-.field_select {
+/* line 20, ../sass/fancy-inputs.scss */
+.field_select, .field_file {
   box-sizing: border-box;
   width: 100%;
   margin-top: .25em;
   margin-bottom: 0;
 }
 
+/* line 27, ../sass/fancy-inputs.scss */
 .i {
   display: inline-block;
 }
@@ -29,15 +33,19 @@
  * Icons
  * ----------------------------------------------------------------------------
  */
-.icon_disclosure, .field_select:hover .field_select__affordance .i,
+/* line 37, ../sass/fancy-inputs.scss */
+.icon_disclosure, .field_select:hover .field_select__affordance .i, .field_file:hover .field_file__affordance .i,
 .icon_disclosure--active,
 .field_select__input:focus ~ .field_select__affordance .i,
-.field_select__input:active ~ .field_select__affordance .i {
+.field_select__input:active ~ .field_select__affordance .i,
+.field_file__input:focus ~ .field_file__affordance .i,
+.field_file__input:active ~ .field_file__affordance .i {
   width: 16px;
   height: 16px;
   background-repeat: no-repeat;
 }
 
+/* line 46, ../sass/fancy-inputs.scss */
 .icon_checkbox--unchecked, .field_checkbox__fancy,
 .icon_checkbox--checked,
 .field_checkbox--checked .field_checkbox__fancy,
@@ -50,24 +58,29 @@
   background-repeat: no-repeat;
 }
 
+/* line 53, ../sass/fancy-inputs.scss */
 .icon_checkbox--unchecked, .field_checkbox__fancy,
 .icon_radio--unchecked,
 .field_radio__fancy {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAbxJREFUeNqkVMtKQlEU3Vcwpavkg7KJ0ROtJg0aVJPCaFDULGzcsB/oH+oHGjapSTTrBUVRRBHVoEmlvYyKwEIt1PCR3vaSc0XlJloLFmd72Gt59rl7H2nu7I404GFOibVJ7D0x95grs71tu1oiSVGU/I/583s3LwvMISqPfeYMm/pKzXp4vWCjQV7XmGa7sYZcNpk6rSayGPW5xI9EmnyRGPnCcQolUtiKMifY8KDQzMJGjRyfMOu67WYaba4nnSRpHinLlWw9vtNlCF70yexTTyjxnUF1jM0um4nGWx1UCdYfgnQVjpE4xAAbKjoOhmHkqDXQWEsDVQrkQgOt8CCYeRG0W+RfS9MCcqER8Kpm+PzktslULQo0HtXMicBi0FdtVqBxqmZJBJmsQv8FzF4RxNKZqsXR1Lcavqhmpwj8kVjVZqI1gCPVbBnBTSSea8hKgdRb1ggsqWbbaLzgV5I2A28Vm20EggSNaNqd/KCLAf/rOPVz918XvRqFg47O7rDK5GLi82c4B5ft57JQmjiR5qCXPkGLYkTKAVVMaz1BRVlsiPpGmJNi5tCQeHOemYfMVdwRBrv0H34EGAAJPLQBEeNTgwAAAABJRU5ErkJggg==);
 }
 
+/* line 58, ../sass/fancy-inputs.scss */
 .icon_checkbox--checked, .field_checkbox--checked .field_checkbox__fancy,
 .icon_radio--checked,
 .field_radio--checked .field_radio__fancy {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAoxJREFUeNqMlE1sElEQx2eptBvYpts2tFw0iDStevUgeNAoJmrkZpRbw4HEHognvHJVORkO4MmLJoT0Bn5HqRrFqJEDUanFVLSpVKHUdKsLFXDmuW+lBMVJ/nnfv30z82aFVqsFnXbp5fvD2JxBUbtDm/6IeoBKoO637z+/b5eMZ9aEdhhOTGETRR2Cf9scagYhdHhGVdVzoihe0GEIOohNEjU4KvbD5IgZdg9LIItGtr6mbkK+qkB+dQMqah3sQ6Yfx2yWV3N3bh9Ip9MQDAaBwbQbPUMN7R0dhOM2CxgEoeuVmrj/dUWBCckI8XgcMpkMOBwOCAQCIFx8UaBTT1H794xIcNI+Dr0M3YJIJAKFQkEHoZtnt+HaEQKNmwbgxM6xnqBSqQTRaJS1kiSB3++H5Vrzsl2EKwZcP02bHLJZd402/g0UDof1dYpTXgWYXfhsorFBSz9MYcDJEokEhEIhyGazXUGKorDx9PQ0yJYxeLRUAc4g2HbqyAO/s1YsFlkbi8UglUp1BTmdTnC5XGA06EliDIpZDdXfaLagr09gweTBTSaTUC6XIZfL6SCr1Qper7drGOhmy9RRNhtsArPCgJQlMko9B5H5fD62h2y9/pNPL3HYc+rMV/8c6ARy83g8YLPZ9PGbVf3MEw67Tp131Q32INuBlHZKP3fP7Xbr67R1Ac9odo3D7tLrX/leg5uLX7bcRJZlln4CtrtHdmNxBeiMVjn3qPNf5UQvnoPo9rc+fMWSWqfhN0ouFvxbHdZZ6FQNE8NmmETRk2ngHgr2PLpFrmk3IpoHQQ/5R7v9gq5SefWoKvLCh6B8+6TQ+XNEIPl3FHVKq1t6kHXUJ9Rj1CzFSPuXbbFfAgwANwgk3BP33c8AAAAASUVORK5CYII=);
 }
 
-.icon_disclosure, .field_select:hover .field_select__affordance .i {
+/* line 62, ../sass/fancy-inputs.scss */
+.icon_disclosure, .field_select:hover .field_select__affordance .i, .field_file:hover .field_file__affordance .i {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAG1JREFUeNpi/P//PwMlgImBQjAMDGBB5ty6dSsfSG0E4gc41MsDcYCamtpEXC4QBOL9QKyAQ/MBqBrsLgCCBigNMsQRySUwzQuR1GA1AJsh/3FpxmUAuiEMuDTjM4ABTUMDLkWMo0mZcgMAAgwA3R8aI+wMTswAAAAASUVORK5CYII=);
 }
 
+/* line 66, ../sass/fancy-inputs.scss */
 .icon_disclosure--active, .field_select__input:focus ~ .field_select__affordance .i,
-.field_select__input:active ~ .field_select__affordance .i {
+.field_select__input:active ~ .field_select__affordance .i, .field_file__input:focus ~ .field_file__affordance .i,
+.field_file__input:active ~ .field_file__affordance .i {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGlJREFUeNpi/P//PwMlgHHUAFQDoqKi8oHURiB+gEO9PBAHLFu2bCJMgAlNgSAQ7wdiBRyaD0DVwAELmqIGKA0yxBHJJTDNC5HUYDUAmyH/cWnGZQC6IQy4NOMzgAFNQ8NoSqShAQABBgA96jT9CVEjZAAAAABJRU5ErkJggg==);
 }
 
@@ -75,12 +88,15 @@
  * Checkboxes
  * ----------------------------------------------------------------------------
  */
+/* line 74, ../sass/fancy-inputs.scss */
 .field_checkbox {
   line-height: 1;
 }
+/* line 79, ../sass/fancy-inputs.scss */
 .field_checkbox > input {
   margin: 0;
 }
+/* line 83, ../sass/fancy-inputs.scss */
 .js .field_checkbox > input {
   top: 0;
   left: 0;
@@ -88,9 +104,10 @@
    * IE8 refuses to fire events on a hidden checkbox. Use opacity instead
    */
   opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
+/* line 96, ../sass/fancy-inputs.scss */
 .field_checkbox__fancy {
   display: inline-block;
   vertical-align: middle;
@@ -98,15 +115,18 @@
   top: 0;
   left: 0;
 }
+/* line 106, ../sass/fancy-inputs.scss */
 .no-js .field_checkbox__fancy {
   display: none;
 }
 
+/* line 115, ../sass/fancy-inputs.scss */
 .field_checkbox,
 .field_checkbox__label {
   cursor: pointer;
 }
 
+/* line 120, ../sass/fancy-inputs.scss */
 .field_checkbox__label {
   font-size: .875em;
 }
@@ -115,12 +135,15 @@
  * Radio buttons
  * ----------------------------------------------------------------------------
  */
+/* line 129, ../sass/fancy-inputs.scss */
 .field_radio {
   line-height: 1;
 }
+/* line 134, ../sass/fancy-inputs.scss */
 .field_radio > input {
   margin: 0;
 }
+/* line 138, ../sass/fancy-inputs.scss */
 .js .field_radio > input {
   top: 0;
   left: 0;
@@ -128,9 +151,10 @@
    * IE8 refuses to fire events on a hidden checkbox. Use opacity instead
    */
   opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
+/* line 151, ../sass/fancy-inputs.scss */
 .field_radio__fancy {
   display: inline-block;
   vertical-align: middle;
@@ -138,15 +162,18 @@
   top: 0;
   left: 0;
 }
+/* line 161, ../sass/fancy-inputs.scss */
 .no-js .field_radio__fancy {
   display: none;
 }
 
+/* line 170, ../sass/fancy-inputs.scss */
 .field_radio,
 .field_radio__label {
   cursor: pointer;
 }
 
+/* line 175, ../sass/fancy-inputs.scss */
 .field_radio__label {
   font-size: .875em;
 }
@@ -155,22 +182,27 @@
  * Selects
  * ----------------------------------------------------------------------------
  */
+/* line 184, ../sass/fancy-inputs.scss */
 .field_select {
   cursor: pointer;
 }
 
+/* line 191, ../sass/fancy-inputs.scss */
 .field_select:hover .field_select__value {
   background-color: #eeeeee;
   border-bottom-color: #cccccc;
 }
 
+/* line 200, ../sass/fancy-inputs.scss */
 .field_select__input {
   width: 100%;
 }
+/* line 203, ../sass/fancy-inputs.scss */
 .ie8 .property-search__criteria .field_select__input {
   width: 120%;
 }
 
+/* line 208, ../sass/fancy-inputs.scss */
 .js .field_select__input {
   top: 0;
   left: 0;
@@ -178,28 +210,32 @@
   bottom: 0;
   height: 100%;
   opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   -webkit-appearance: menulist-button;
   display: block;
   z-index: 2;
   cursor: pointer;
 }
 
+/* line 223, ../sass/fancy-inputs.scss */
 .field_select__value {
   display: block;
   background-color: #eee;
-  widows: 100%;
+  width: 100%;
   padding: .5em;
 }
+/* line 228, ../sass/fancy-inputs.scss */
 .field_select__value:empty:after {
   content: "\a0";
 }
 
+/* line 234, ../sass/fancy-inputs.scss */
 .no_js .field_select__value,
 .no_js .field_select__affordance {
   display: none;
 }
 
+/* line 240, ../sass/fancy-inputs.scss */
 .field_select__input:focus ~ .field_select__value,
 .field_select__input:active ~ .field_select__value {
   background-color: #ddd;
@@ -207,6 +243,7 @@
   color: #333;
 }
 
+/* line 250, ../sass/fancy-inputs.scss */
 .field_select__affordance {
   right: .5em;
   top: 50%;
@@ -214,7 +251,88 @@
   line-height: 1;
 }
 
+/* line 259, ../sass/fancy-inputs.scss */
 .no-js .field_select__value,
 .no-js .field_select__affordance {
+  display: none;
+}
+
+/**
+ * File upload fields
+ * ----------------------------------------------------------------------------
+ */
+/* line 269, ../sass/fancy-inputs.scss */
+.field_file {
+  cursor: pointer;
+}
+
+/* line 276, ../sass/fancy-inputs.scss */
+.field_file:hover .field_file__value {
+  background-color: #eeeeee;
+  border-bottom-color: #cccccc;
+}
+
+/* line 285, ../sass/fancy-inputs.scss */
+.field_file__input {
+  width: 100%;
+}
+/* line 288, ../sass/fancy-inputs.scss */
+.ie8 .property-search__criteria .field_file__input {
+  width: 120%;
+}
+
+/* line 293, ../sass/fancy-inputs.scss */
+.js .field_file__input {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-appearance: menulist-button;
+  display: block;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* line 308, ../sass/fancy-inputs.scss */
+.field_select__value {
+  display: block;
+  background-color: #eee;
+  width: 100%;
+  padding: .5em;
+  overflow: hidden;
+}
+/* line 314, ../sass/fancy-inputs.scss */
+.field_select__value:empty:after {
+  content: "\a0";
+}
+
+/* line 320, ../sass/fancy-inputs.scss */
+.no_js .field_file__value,
+.no_js .field_file__affordance {
+  display: none;
+}
+
+/* line 326, ../sass/fancy-inputs.scss */
+.field_file__input:focus ~ .field_file__value,
+.field_file__input:active ~ .field_file__value {
+  background-color: #ddd;
+  border-color: #cccccc;
+  color: #333;
+}
+
+/* line 336, ../sass/fancy-inputs.scss */
+.field_file__affordance {
+  right: .5em;
+  top: 50%;
+  margin-top: -.5em;
+  line-height: 1;
+}
+
+/* line 345, ../sass/fancy-inputs.scss */
+.no-js .field_file__value,
+.no-js .field_file__affordance {
   display: none;
 }

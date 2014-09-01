@@ -89,7 +89,7 @@ $fieldBorderColorHover: #ccc;
          * IE8 refuses to fire events on a hidden checkbox. Use opacity instead
          */
         opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     }
 }
 
@@ -126,7 +126,7 @@ $fieldBorderColorHover: #ccc;
  * Radio buttons
  * ----------------------------------------------------------------------------
  */
-.field_radio{
+.field_radio {
     @extend %relative;
 
     line-height: 1;
@@ -144,7 +144,7 @@ $fieldBorderColorHover: #ccc;
          * IE8 refuses to fire events on a hidden checkbox. Use opacity instead
          */
         opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     }
 }
 
@@ -213,7 +213,7 @@ $fieldBorderColorHover: #ccc;
         bottom: 0;
         height: 100%;
         opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
         -webkit-appearance: menulist-button;
         display: block;
         z-index: 2;
@@ -223,7 +223,7 @@ $fieldBorderColorHover: #ccc;
     .field_select__value {
         display: block;
         background-color: #eee;
-        widows: 100%;
+        width: 100%;
         padding: .5em;
         &:empty:after {
             content: "\a0";
@@ -262,6 +262,86 @@ $fieldBorderColorHover: #ccc;
 
 
 
+/**
+ * File upload fields
+ * ----------------------------------------------------------------------------
+ */
+.field_file {
+    @extend %relative;
+    @extend %field_metrics;
+    cursor: pointer;
+}
 
+    .field_file:hover {
+        .field_file__value {
+            background-color: $fieldBackgroundColorHover;
+            border-bottom-color: $fieldBorderColorHover;
+        }
+        .field_file__affordance .i {
+            @extend .icon_disclosure;
+        }
+    }
 
+    .field_file__input{
+        width: 100%;
 
+        .ie8 .property-search__criteria & {
+            width: 120%;
+        }
+    }
+
+    .js .field_file__input {
+        @extend %absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        -webkit-appearance: menulist-button;
+        display: block;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    .field_select__value {
+        display: block;
+        background-color: #eee;
+        width: 100%;
+        padding: .5em;
+        overflow: hidden;
+        &:empty:after {
+            content: "\a0";
+        }
+    }
+
+    .no_js .field_file__value,
+    .no_js .field_file__affordance {
+        display: none;
+    }
+
+    .field_file__input:focus,
+    .field_file__input:active {
+        & ~ .field_file__value {
+            background-color: #ddd;
+            border-color: $fieldBorderColorHover;
+            color: #333;
+        }
+        & ~ .field_file__affordance .i {
+            @extend .icon_disclosure--active;
+        }
+    }
+
+    .field_file__affordance {
+        @extend %absolute;
+        right: .5em;
+        top: 50%;
+        margin-top: -.5em;
+        line-height: 1;
+    }
+
+    .no-js .field_file__value,
+    .no-js .field_file__affordance {
+        display: none;
+    }
